@@ -1,5 +1,5 @@
 import copy
-
+ 
 class Perceptron:
 
     def __init__(self, epochCount):
