@@ -1,5 +1,5 @@
 import copy
- 
+
 class Perceptron:
 
     def __init__(self, epochCount):
@@ -8,10 +8,13 @@ class Perceptron:
         self.innerEpochCount = epochCount
 
     def predict (self, pureInput):
+        predictedValue = 0 if pureInput < 0 else 1
+        '''
         if pureInput < 0:
             predictedValue = 0
         else :
             predictedValue = 1
+        '''
         return predictedValue
 
 
@@ -32,6 +35,8 @@ class Perceptron:
         weightVector = []
         for columnIndex in range (1, columnCount):
             weightVector.append(0)
+        print("weightVector: ", weightVector)
+
         deltaWeightVector = []
         for columnIndex in range (1, columnCount):
             deltaWeightVector.append(0)
@@ -40,9 +45,10 @@ class Perceptron:
         # Now let us fit the data
         for epoch in range (0, self.innerEpochCount):
             for objectIndex in range (0, objectCount):
+                pass
                 # modify this multiplication
-                pureInput = sum(weightVector * xMatrixExtended[objectIndex])
-                yPredicted = self.predict(pureInput)
+                # pureInput = sum(weightVector * xMatrixExtended[objectIndex])
+                # yPredicted = self.predict(pureInput)
 
             # Z
             # y = phi(z)
