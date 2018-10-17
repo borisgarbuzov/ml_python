@@ -1,9 +1,3 @@
-def matmult(m, v):
-    nrows = len(m)
-    w = [None] * nrows
-    for row in range(nrows):
-        w[row] = reduce(lambda x,y: x+y, map(lambda x,y: x*y, m[row], v))
-    return w
 
 
 a = [4, 5, 6]
@@ -16,14 +10,30 @@ print ("d = ", d)
 myCortege = (1,2)
 print ("myCortege = ", myCortege)
 
+a = 10000
+b = 10000
+print ("a == b", a == b)
+print ("a is b", a is b)
 
-#................................................
 
-# m, n = 2, 3
-# vec = range(1, n+1)
-# mat = [map(lambda x: i*n+x+1, range(n)) for i in range(m)]
-# print ('vec=', vec)
-# print ('mat=', mat)
-# print ('mat . vec=', matmult(mat, vec))
+bracketedAWithComma = (a,)
+print (type(bracketedAWithComma))
+
+class ClassA:
+
+    def __init__ (self, field1):
+        self.field1 = field1
+
+    def someMethod(self):
+        print ("field 1 without self: ", field1)
+
+field1 = 5
+myClassA = ClassA(6)
+myClassA.someMethod()
+
+
+
+
+
 
 
