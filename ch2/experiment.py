@@ -5,7 +5,7 @@ def matmult(m, v):
         w[row] = reduce(lambda x,y: x+y, map(lambda x,y: x*y, m[row], v))
     return w
 
- 
+
 a = [4, 5, 6]
 b = [1,2,3]
 c = [i * j for i, j in zip(a, b)]
