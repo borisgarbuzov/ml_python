@@ -15,6 +15,14 @@ b = 10000
 print ("a == b", a == b)
 print ("a is b", a is b)
 
+print ("Now a and b will be new")
+a = [1, 2]
+b = [3, 4]
+c = a + b
+print ("c wrong = ", c)
+c = [aElement + bElement for aElement, bElement in zip(a, b)]
+print ("c right = ", c)
+
 
 bracketedAWithComma = (a,)
 print (type(bracketedAWithComma))
