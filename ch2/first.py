@@ -17,5 +17,6 @@ myPerceptron = Perceptron.Perceptron(epochCount = myEpochCount,
 myPerceptron.fit(xMatrix = xMatrix,
                  yVector = yVector
                  )
-
+print("predict([1, 1, 1]) = ", myPerceptron.predict([1, 1, 1]))
+print("predict([1, 0, 0]) = ", myPerceptron.predict([1, 0, 0]))
 

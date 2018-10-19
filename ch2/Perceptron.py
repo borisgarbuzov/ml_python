@@ -8,7 +8,13 @@ class Perceptron:
         self.innerEpochCount = epochCount
         self.learningSpeed = learningSpeed
 
-    def predict (self, pureInput):
+
+    def predict (self, xVectorExtended):
+        return self.phi (self.computePureInput(xVectorExtended))
+
+
+    def phi (self, pureInput):
+
         predictedValue = 0 if pureInput < 0 else 1
         '''
         if pureInput < 0:
@@ -17,6 +23,13 @@ class Perceptron:
             predictedValue = 1
         '''
         return predictedValue
+
+
+    def computePureInput (self, xVectorExtended):
+        pureInput = sum([currentWeight * currentX
+                 for currentWeight, currentX
+                 in zip(self.weightVector, xVectorExtended)])
+        return pureInput
 
 
     def fit (self, xMatrix, yVector):
@@ -33,10 +46,10 @@ class Perceptron:
         print("xMatrixExtended: ", xMatrixExtended)
         columnCount = len(xMatrixExtended[0])
         print("columnCount: ", columnCount)
-        weightVector = []
+        self.weightVector = []
         for columnIndex in range (0, columnCount):
-            weightVector.append(0)
-        print("weightVector: ", weightVector)
+            self.weightVector.append(0)
+        print("weightVector: ", self.weightVector)
 
         deltaWeightVector = []
         for columnIndex in range (0, columnCount):
@@ -49,11 +62,7 @@ class Perceptron:
                 # modify this multiplication
                 print("epoch = ", epoch)
                 print("objectIndex = ", objectIndex)
-
-                pureInput = sum([currentWeight * currentX
-                                 for currentWeight, currentX
-                                 in zip(weightVector, xMatrixExtended[objectIndex])])
-                yPredicted = self.predict(pureInput)
+                yPredicted = self.predict(xMatrixExtended[objectIndex])
                 deltaWeightVector = []
                 # update the weights
                 # how to multiply vector by scalar?
@@ -62,16 +71,15 @@ class Perceptron:
                                         (yVector[objectIndex] - yPredicted) *
                                         currentX
                                         ))
-                weightVector = [weight + deltaWeight for weight, deltaWeight in zip(weightVector, deltaWeightVector)]
+                # weight += deltaWeight
+                self.weightVector = [weight + deltaWeight for weight, deltaWeight in zip(self.weightVector, deltaWeightVector)]
 
-                print("pureInput inside the loop: ", pureInput)
                 print("yPredicted inside the loop: ", yPredicted)
                 print("deltaWeightVector inside the loop: ", deltaWeightVector)
-                print("weightVector inside the loop: ", weightVector)
+                print("weightVector inside the loop: ", self.weightVector)
 
 
         # outside the loop
-        print("pureInput exists outside the loop: ", pureInput)
         print("yPredicted exists outside the loop: ", yPredicted)
         print("deltaWeightVector exists outside the loop: ", deltaWeightVector)
 
