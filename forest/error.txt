@@ -1,0 +1,24 @@
+On some conditions... to the Tree there will be submitted the numpy array.
+The function is set the way that it accepts the regular python list. 
+---------------- 
+main: X = [[0 0 0]
+ [0 0 1]
+ [0 1 0]
+ [0 1 1]
+ [1 0 0]
+ [1 0 1]
+ [1 1 0]
+ [1 1 1]]
+main: y = [0 1 1 0 1 0 1 0]
+Traceback (most recent call last):
+  File "G:/mine/my_text/toronto_u/research/zhou/r/ml/ml_python/forest/main.py", line 20, in <module>
+    myForest.fit(X = X, y = y, colCount = 2)
+  File "G:\mine\my_text\toronto_u\research\zhou\r\ml\ml_python\forest\RandomForest.py", line 48, in fit
+    self.studentTrees[studentIndex].fit(xRowColSample, yRowSample)
+  File "G:\mine\my_text\toronto_u\research\zhou\r\ml\ml_python\forest\Tree.py", line 114, in fit
+    self.add_new_point(point=self.first_point, X=X_train, y=y_train, level=0)
+  File "G:\mine\my_text\toronto_u\research\zhou\r\ml\ml_python\forest\Tree.py", line 88, in add_new_point
+    point.end_value = max(y, key=y.count)
+AttributeError: 'numpy.ndarray' object has no attribute 'count'
+
+Process finished with exit code 1
