@@ -67,3 +67,5 @@ ax.legend(loc='upper center',
           ncol=1, fancybox=True)
 plt.show()
 
+
+
