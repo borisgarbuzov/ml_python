@@ -71,7 +71,56 @@ for rowIndex in range(0, 2) :
     s1Matrix += currentOuterProduct
 print ("s1Matrix =\n", s1Matrix)
 
-# same for the second class
+s2Matrix = np.zeros_like(xc2Centered)
+print ("s2Matrix =\n", s2Matrix)
+for rowIndex in range(0, 2) :
+    currentRow = xc2Centered [rowIndex, :]
+    print("currentRow =", currentRow)
+    currentOuterProduct = np.outer(currentRow, currentRow)
+    print("currentOuterProduct =\n", currentOuterProduct)
+    s2Matrix += currentOuterProduct
+print ("s2Matrix =\n", s2Matrix)
+detS2 = np.linalg.det(s2Matrix)
+print ("detS2 =", detS2) # same = 0
+
+sWMatrix = s1Matrix + s2Matrix
+print ("sWMatrix =\n", sWMatrix)
+
+sigma1Matrix = sWMatrix / sSize
+sigma2Matrix = sWMatrix / sSize
+print ("sigma2Matrix =\n", sigma2Matrix)
+
+xc1Colmeans = np.mean(a = xc1, axis=0)
+print ("xc1Colmeans =", xc1Colmeans)
+xc2Colmeans = np.mean(a = xc2, axis=0)
+print ("xc2Colmeans =", xc2Colmeans)
+
+sBOuter1 = np.outer(xc1Colmeans, xc1Colmeans)
+print ("sBOuter1 =\n", sBOuter1)
+sBOuter2 = np.outer(xc2Colmeans, xc2Colmeans)
+print ("sBOuter2 =\n", sBOuter2)
+
+sBMatrix = sSize * (sBOuter1 + sBOuter1)
+print ("sBMatrix =\n", sBMatrix)
+
+sWInv = np.linalg.inv(a = sWMatrix)
+print ("sWInv =\n", sWInv)
+
+sMult = np.dot(a = sWInv, b = sBMatrix)
+print ("sMult =\n", sMult)
+eigenValues, eigenVectors = np.linalg.eig(a = sMult)
+print ("eigenValues =", eigenValues)
+print ("eigenVectors =\n", eigenVectors)
+eigenValuesSorted = sorted(eigenValues, reverse=True)
+print ("eigenValuesSorted =", eigenValuesSorted)
+
+wMatrix = eigenVectors[:, 1]
+print ("wMatrix =\n", wMatrix)
+xW = x.dot(wMatrix)
+print ("xW =\n", xW)
+
+
+
 
 
 
