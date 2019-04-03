@@ -9,7 +9,8 @@ X = np.array([[0, 0],
 y = np.array([1, 1, 2, 2])
 
 # Инициализируем наш классификатор и передаем ему выборку
-lda = LinearDiscriminantAnalysis()
+lda = LinearDiscriminantAnalysis(solver = "eigen")
 ldx = lda.fit_transform(X, y)
 
 print("X':\n", ldx)
+print("X' parameters:\n", lda.get_params())
