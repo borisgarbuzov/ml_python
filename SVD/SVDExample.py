@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def matrix_multiplication(u, sigma, v_transpose):
@@ -53,5 +54,6 @@ print("x = \n", np.around(x,2))
 print("u = \n", np.around(u,2))
 
 
-
-
+plt.plot(x[:, 0], x[:, 1], 'o')
+plt.show()
+plt.savefig('plot_of_x.png')
