@@ -1,10 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 
 def matrix_multiplication(u, sigma, v_transpose):
     result = np.dot(u, np.dot(sigma, v_transpose))
     return result
+
+def kernelPair (x1, x2):
+    dif = x1 - x2
+    myDot = np.dot(dif, dif)
+    result = math.exp (-myDot)
+    return result
+
+def computeKernelMatrix (xMatrix):
+    rowCount = xMatrix.shape[0]
+    for i in range(0, rowCount):
+        pass
+    kernelMatrix = 0
+    return kernelMatrix
 
 u = np.array([
     [np.sqrt(3)/2, 0, -1/2], 
@@ -81,9 +95,21 @@ plt.plot(x[:, 0], x[:, 1], 'o')
 plt.plot(xPrime[:, 0], xPrime[:, 1], 'o')
 # plt.ylim(-1.4, 0)
 plt.savefig('plot_of_x.png')
-plt.show()
+# plt.show()
 plt.plot(xC[:, 0], xC[:, 1], 'o')
 
 # plt.ylim(-1.4, 0)
 plt.savefig('plot_of_xC.png')
 
+
+ker12 = kernelPair(xC[1, :], xC[2, :])
+print("ker12 = ", ker12)
+
+vector1 = np.array([1, 1])
+vector2 = np.array([-1, -1])
+kerNew = kernelPair(vector1, vector2)
+shouldBeMins8 = math.log (kerNew)
+print("shouldBeMins8 = ", shouldBeMins8)
+
+myKernelMatrix = computeKernelMatrix(xC)
+print("myKernelMatrix = \n", myKernelMatrix)
