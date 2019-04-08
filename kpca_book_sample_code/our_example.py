@@ -4,7 +4,7 @@ from kernel_pca_func import rbf_kernel_pca
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import KernelPCA
-
+import math
 
 X = np.array([[1, 2, 3],
               [1.1, 1.9, 3.1],
@@ -23,7 +23,16 @@ print("X_standard=\n", np.around(X_standard, 2))
 cov_matrix = np.cov(X_standard.T)
 print("cov_matrix=\n", np.around(cov_matrix, 2))
 
-# eigenvectros, eigenvalues
+# xtx
+XTX = np.dot(X_standard.T, X_standard)
+print("XTX=\n", np.around(XTX, 2))
+
+# xtx eigenvectros, eigenvalues
+eigvalues, eigvectors = np.linalg.eig(XTX)
+print("XTX eigvalues=\n", np.around(eigvalues, 2))
+print("XTX eigvectors=\n", np.around(eigvectors, 2))
+
+# cov eigenvectros, eigenvalues
 eigvalues, eigvectors = np.linalg.eig(cov_matrix)
 print("eigvalues=\n", np.around(eigvalues, 2))
 print("eigvectors=\n", np.around(eigvectors, 2))
@@ -60,3 +69,6 @@ books_kpca, K = rbf_kernel_pca(X = X, gamma=1, n_components=2)
 print("books_kpca=\n", np.around(books_kpca, 2))
 print("Kernel=\n", np.around(K, 2))
 print("XXT=\n", np.around(XXT, 2))
+
+expXXT = np.exp (XXT)
+print("expXXT=\n", np.around(expXXT, 1))
