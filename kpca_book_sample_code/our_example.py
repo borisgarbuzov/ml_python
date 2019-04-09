@@ -65,9 +65,8 @@ scikit_kpca = KernelPCA(n_components=2, kernel='rbf', gamma=15)
 X_skernpca = scikit_kpca.fit_transform(X)
 print("X_skernpca=\n", np.around(X_skernpca, 2))
 
-books_kpca, K = rbf_kernel_pca(X = X, gamma=1, n_components=2)
+books_kpca = rbf_kernel_pca(X = X, gamma=1, n_components=2)
 print("books_kpca=\n", np.around(books_kpca, 2))
-print("Kernel=\n", np.around(K, 2))
 print("XXT=\n", np.around(XXT, 2))
 
 expXXT = np.exp (XXT)
