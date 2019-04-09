@@ -28,4 +28,4 @@ def rbf_kernel_pca(X, gamma, n_components):
     X_pc = np.column_stack((eigvecs[:, -i]
                             for i in range(1, n_components + 1)))
 
-    return X_pc, K
+    return X_pc
