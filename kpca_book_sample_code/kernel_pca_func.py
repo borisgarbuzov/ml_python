@@ -13,7 +13,6 @@ def rbf_kernel_pca(X, gamma, n_components):
 
     # вычисляем симметричную матрицу ядра
     K = exp(-gamma * mat_sq_dists)
-    print("Not centered=\n", np.around(K, 2))
 
     # Центрируем матрицу ядра
     N = K.shape[0]
