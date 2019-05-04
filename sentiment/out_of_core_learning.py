@@ -21,7 +21,6 @@ def stream_docs(path):
             text, label = line[:-3], int(line[-2])
             yield text, label
 
-next(stream_docs(path='./movie_data.csv'))
 
 def get_minibatch(doc_stream, size):
     docs, y = [], []
@@ -38,6 +37,7 @@ vect = HashingVectorizer(decode_error='ignore',
                          n_features=2**21,
                          preprocessor=None,
                          tokenizer=tokenizer)
+
 
 clf = SGDClassifier(loss='log', random_state=1, max_iter=1, tol=None)
 doc_stream = stream_docs(path='./movie_data.csv')
