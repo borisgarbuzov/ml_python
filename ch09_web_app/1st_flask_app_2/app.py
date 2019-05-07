@@ -4,7 +4,7 @@ from wtforms import Form, TextAreaField, validators
 app = Flask(__name__)
 
 class HelloForm(Form):
-    sayhello = TextAreaField('',[validators.DataRequired()])
+    sayhello = TextAreaField('Input your name',[validators.DataRequired()])
 
 @app.route('/')
 def index():
