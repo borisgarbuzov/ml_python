@@ -12,6 +12,7 @@ app = Flask(__name__)
 
 ######## Preparing the Classifier
 cur_dir = os.path.dirname(__file__)
+
 clf = pickle.load(open(os.path.join(cur_dir,
                  'pkl_objects',
                  'classifier.pkl'), 'rb'))
@@ -74,4 +75,6 @@ def feedback():
     return render_template('thanks.html')
 
 if __name__ == '__main__':
+	print("__file__ = ", __file__)
+	print("__name__ = ", __name__)
     app.run(debug=True)
