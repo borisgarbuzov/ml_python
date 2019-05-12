@@ -28,5 +28,19 @@
 	  </form>
 </div>
 
+<div>
+    <h1>All python internal objects</h1>
+    <ul>
+        {% for key, value in inside.items() %}
+            <li>{{ key, value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <h1>Transformed document</h1>
+    {{ x }}
+</div>
+
   </body>
 </html>

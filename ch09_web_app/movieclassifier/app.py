@@ -23,7 +23,7 @@ def classify(document):
     X = vect.transform([document])
     y = clf.predict(X)[0]
     proba = np.max(clf.predict_proba(X))
-    return label[y], proba
+    return label[y], proba, X
 
 def train(document, y):
     X = vect.transform([document])
@@ -53,11 +53,14 @@ def results():
     form = ReviewForm(request.form)
     if request.method == 'POST' and form.validate():
         review = request.form['moviereview']
-        y, proba = classify(review)
+        y, proba, X = classify(review)
+        internals = globals()
         return render_template('results.html',
                                 content=review,
                                 prediction=y,
-                                probability=round(proba*100, 2))
+                                probability=round(proba*100, 2),
+                                x=X,
+                                inside=internals)
     return render_template('reviewform.html', form=form)
 
 @app.route('/thanks', methods=['POST'])
@@ -75,6 +78,4 @@ def feedback():
     return render_template('thanks.html')
 
 if __name__ == '__main__':
-	print("__file__ = ", __file__)
-	print("__name__ = ", __name__)
     app.run(debug=True)
