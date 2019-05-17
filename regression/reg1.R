@@ -33,7 +33,26 @@ xCentered = myX - xBar
 xCentered
 sum(xCentered)
 
+xyLm
+newX = 5
+predict(xyLm, newX, se.fit = FALSE)
 
+
+
+## Predictions
+x <- rnorm(15)
+y <- x + rnorm(15)
+plot(x, y)
+valery = lm(y ~ x)
+valery
+yHats = predict(valery)
+plot(x, yHats)
+myResiduals = residuals(valery)
+newX = as.data.frame(x=5.5)
+predict(valery, newdata = newX)
+
+new <- data.frame(x = seq(-3, 3, 0.5))
+predict(lm(y ~ x), new, se.fit = TRUE)
 
 
 
