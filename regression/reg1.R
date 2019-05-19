@@ -1,7 +1,58 @@
 rm(list = ls())
-setwd("G:/mine/my_text/toronto_u/research/zhou/r/ml/ml_python/regression")
+# setwd("G:/mine/my_text/toronto_u/research/zhou/r/ml/ml_python/regression")
+setwd("~/ml_python/regression")
 df = read.csv("data1.csv")
 df
 xyLm = lm(df)
 xyLm
 plot(df)
+names(xyLm)
+myResiduals = residuals(xyLm)
+sum(myResiduals)
+coef(xyLm)
+effects(xyLm)
+#rank(xyLm)
+myFittedValues = fitted.values(xyLm)
+xyLm$xlevels
+
+
+# myXLevels = xlevels(xyLm)
+# myXLevels
+# rise = myFittedValues[2] - myFittedValues[1]
+# rise
+# run = myXLevels[2] - myXLevels[1]
+# run
+# slope = rise / run
+# slope
+# coefficients(xyLm)
+
+myX = c(1, 2, 3)
+xBar = mean(myX)
+xBar
+xCentered = myX - xBar
+xCentered
+sum(xCentered)
+
+xyLm
+newX = 5
+predict(xyLm, newX, se.fit = FALSE)
+
+
+
+## Predictions
+x <- rnorm(15)
+y <- x + rnorm(15)
+plot(x, y)
+valery = lm(y ~ x)
+valery
+yHats = predict(valery)
+plot(x, yHats)
+myResiduals = residuals(valery)
+newX = as.data.frame(x=5.5)
+predict(valery, newdata = newX)
+
+new <- data.frame(x = seq(-3, 3, 0.5))
+predict(lm(y ~ x), new, se.fit = TRUE)
+
+
+
