@@ -1,9 +1,9 @@
 rm(list = ls())
 # setwd("G:/mine/my_text/toronto_u/research/zhou/r/ml/ml_python/regression")
-setwd("~/ml_python/regression")
-df = read.csv("data1.csv")
+#setwd("~/ml_python/regression")
+df = read.csv("data1.csv", header = T)
 df
-xyLm = lm(df)
+xyLm = lm(y~x, data = df)
 xyLm
 plot(df)
 names(xyLm)
@@ -34,8 +34,8 @@ xCentered
 sum(xCentered)
 
 xyLm
-newX = 5
-predict(xyLm, newX, se.fit = FALSE)
+newX = data.frame(x = 5)
+predict(xyLm, newX)
 
 
 
@@ -48,11 +48,8 @@ valery
 yHats = predict(valery)
 plot(x, yHats)
 myResiduals = residuals(valery)
-newX = as.data.frame(x=5.5)
+newX = data.frame(x=5.5)
 predict(valery, newdata = newX)
 
 new <- data.frame(x = seq(-3, 3, 0.5))
-predict(lm(y ~ x), new, se.fit = TRUE)
-
-
-
+predict(lm(y ~ x), new)
