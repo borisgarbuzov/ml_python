@@ -126,3 +126,6 @@ dmypy.json
 **/.idea/**/workspace.xml
 **/.idea/**/usage.statistics.xml
 **/.idea/**/tasks.xml
+
+# R specific files
+.Rhistory
