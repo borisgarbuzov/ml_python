@@ -1,6 +1,6 @@
 rm(list = ls())
 # setwd("G:/mine/my_text/toronto_u/research/zhou/r/ml/ml_python/regression")
-#setwd("~/ml_python/regression")
+setwd("~/ml_python/regression")
 df = read.csv("data1.csv", header = T)
 df
 xyLm = lm(y~x, data = df)
@@ -14,7 +14,7 @@ effects(xyLm)
 #rank(xyLm)
 myFittedValues = fitted.values(xyLm)
 xyLm$xlevels
-
+summary(xyLm)
 
 # myXLevels = xlevels(xyLm)
 # myXLevels
@@ -45,6 +45,7 @@ y <- x + rnorm(15)
 plot(x, y)
 valery = lm(y ~ x)
 valery
+
 yHats = predict(valery)
 plot(x, yHats)
 myResiduals = residuals(valery)
@@ -53,3 +54,21 @@ predict(valery, newdata = newX)
 
 new <- data.frame(x = seq(-3, 3, 0.5))
 predict(lm(y ~ x), new)
+
+
+2*(1-pnorm (q=1.11))
+(0.5-0.36650)*2
+
+
+y = c(1, 2, 3, 4, 5, 6, 7, 8)
+x = c(1, 1, 2, 2, 3, 3, 4, 4)
+fitObject = lm (y~x)
+anova(fitObject)
+
+factorX = as.factor(x)
+fitFactorObject = lm (y~factorX)
+anova(fitFactorObject)
+
+
+
+
