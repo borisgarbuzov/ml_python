@@ -6,6 +6,9 @@ df
 xyLm = lm(y~x, data = df)
 xyLm
 plot(df)
+plot(xyLm)
+
+
 names(xyLm)
 myResiduals = residuals(xyLm)
 sum(myResiduals)
@@ -69,6 +72,13 @@ factorX = as.factor(x)
 fitFactorObject = lm (y~factorX)
 anova(fitFactorObject)
 
+y = c(1, 2, 3, 4, 5, 6, 7, 8)
+x = c(0, 0, 0, 0, 1, 1, 1, 1)
+xyLm = lm(y~x, data = df)
+xyLm
+plot(y~x)
+plot(xyLm)
+boxplot(y~x)
 
 
 
