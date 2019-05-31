@@ -81,7 +81,7 @@ plot(xyLm)
 boxplot(y~x)
 
 rm(list = ls())
-n = 20
+n = 200
 sigma = 30
 e = rnorm(n=n, mean=0, sd = sigma)
 e
@@ -89,7 +89,7 @@ plot(e)
 x = 1:n
 b0 = 7
 b1 = -2
-yHat = b0 + b1*x^2 
+yHat = b0 + b1*x 
 yHat
 plot(yHat)
 y = yHat + e
@@ -105,6 +105,9 @@ myResiduals
 plot(myResiduals, col = "blue")
 plot(e, col = "red")
 e
-
-
-
+plot(e~myResiduals)
+plot(y~x)
+abline(lm(y ~ x))
+summary(fit)
+summary(y)
+mean(x)
