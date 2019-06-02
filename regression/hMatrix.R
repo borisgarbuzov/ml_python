@@ -5,5 +5,13 @@ X = as.matrix(cbind(one, x))
 X
 XtX = t(X) %*% X
 XtXinv = solve(XtX)
+# make sure it is inverse indeed
 XtXinv %*% XtX
-X %*% solve(t(X) %*% X) 
+
+# pseudoinverse
+xPlus = solve(t(X)) %*% t(X)
+
+pMatrix = X %*% xPlus
+pMatrix
+
+
