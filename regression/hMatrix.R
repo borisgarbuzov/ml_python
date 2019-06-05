@@ -9,9 +9,25 @@ XtXinv = solve(XtX)
 XtXinv %*% XtX
 
 # pseudoinverse
-xPlus = solve(t(X)) %*% t(X)
+xPlus = XtXinv %*% t(X)
+xPlus
 
+# To get hat or projection matrix, we need to multiply xPlus pseudo-inverse by X on the left
 pMatrix = X %*% xPlus
 pMatrix
+
+y = c(1, 3, 2)
+yHat = pMatrix %*% y
+yHat
+
+fit = lm(y~x)
+names(fit)
+myFittedValues = fitted.values(fit)
+myFittedValues
+
+
+
+
+
 
 
