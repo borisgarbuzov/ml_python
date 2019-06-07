@@ -25,8 +25,9 @@ names(fit)
 myFittedValues = fitted.values(fit)
 myFittedValues
 
-
-
+myNormalSample = rnorm(n=100)
+myCauchySample = rcauchy(n=100)
+qqnorm(myCauchySample)
 
 
 
