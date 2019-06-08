@@ -1,6 +1,6 @@
 rm(list = ls())
-x = c(1, 2, 3)
-one = c(1, 1, 1)
+x = c(1, 2, 3, 4)
+one = c(1, 1, 1, 1)
 X = as.matrix(cbind(one, x))
 X
 XtX = t(X) %*% X
@@ -15,6 +15,7 @@ xPlus
 # To get hat or projection matrix, we need to multiply xPlus pseudo-inverse by X on the left
 pMatrix = X %*% xPlus
 pMatrix
+X
 
 y = c(1, 3, 2)
 yHat = pMatrix %*% y
