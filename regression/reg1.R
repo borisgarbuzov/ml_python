@@ -4,9 +4,23 @@ setwd("~/ml_python/regression")
 df = read.csv("data1.csv", header = T)
 df
 xyLm = lm(y~x, data = df)
-xyLm
 plot(df)
-plot(xyLm)
+# plot(xyLm)
+summary(xyLm)
+dim(df)
+x2 = c(1, 3, 5, 2, 4)
+df$x2 = x2
+xyLm2 = lm(y ~ x + x2, data = df)
+xyLm2  
+summary(xyLm)
+summary(xyLm2)
+library(MASS)
+step.model <- stepAIC(xyLm2, direction = "both", 
+                      trace = TRUE)
+summary(step.model)
+
+
+
 
 
 names(xyLm)
@@ -17,7 +31,9 @@ effects(xyLm)
 #rank(xyLm)
 myFittedValues = fitted.values(xyLm)
 xyLm$xlevels
-summary(xyLm)
+
+
+
 
 # myXLevels = xlevels(xyLm)
 # myXLevels
@@ -111,3 +127,7 @@ abline(lm(y ~ x))
 summary(fit)
 summary(y)
 mean(x)
+
+
+
+
